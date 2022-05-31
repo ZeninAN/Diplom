@@ -13,103 +13,74 @@ public class DataGenerator {
 
     public static Faker faker = new Faker(new Locale("en"));
 
-    public static String getApprovedNumber() {
-        return "1111 2222 3333 4444";
+    private DataGenerator() {
     }
 
-    public static String getDeclinedNumber() {
-        return "5555 6666 7777 8888";
+    public static String getFirstCardNumber() {
+        return ("4444 4444 4444 4441");
+    }
+
+    public static String getSecondCardNumber() {
+        return ("4444 4444 4444 4442");
     }
 
     public static String getInvalidCardNumber() {
-        return "1111 2222 3333 4445";
+        return faker.finance().creditCard();
     }
 
-    public static String getShortCardNumber() {
-        return "4444 4444 4444 444";
+    public static String getInvalidShortCardNumber() {
+        return faker.numerify("#### #### #### #");
     }
 
-    public static String getCurrentMonth() {
-        LocalDate localDate = LocalDate.now();
-        return String.format("%02d", localDate.getMonthValue());
+    public static String getMonthCard(int plusMonth) {
+        return LocalDate.now().plusMonths(plusMonth).format(DateTimeFormatter.ofPattern("MM"));
     }
 
-    public static String getLastMonth() {
-        LocalDate localDate = LocalDate.now();
-        LocalDate lastMonth = localDate.minusMonths(1);
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MM");
-        String monthValue = lastMonth.format(dateTimeFormatter);
-        return monthValue;
+    public static String getInvalidMonthCardOneDigit() {
+        return faker.numerify("#");
     }
 
-    public static String getCurrentYear() {
-        return String.format("%ty", Year.now());
+    public static String getInvalidMonthCardInvalidPeriod() {
+        return "19";
     }
 
-    public static String getLastYear() {
-        LocalDate localDate = LocalDate.now();
-        return String.format("%ty", localDate.minusYears(1));
+    public static String getInvalidMonthCard() {
+        return "00";
     }
 
-    public static String getNextYear() {
-        LocalDate localDate = LocalDate.now();
-        return String.format("%ty", localDate.plusYears(1));
+    public static String getYearCard(int plusYears) {
+        return LocalDate.now().plusYears(plusYears).format(DateTimeFormatter.ofPattern("yy"));
     }
 
-    public static String getValidName() {
-        Faker faker = new Faker(new Locale("ru"));
-        return faker.name().firstName() + " " + faker.name().lastName();
+    public static String getInvalidYearCard() {
+        return faker.numerify("#");
     }
 
-    public static String getValidNameInLatinLetters() {
-        Faker faker = new Faker(new Locale("en"));
-        return faker.name().firstName() + " " + faker.name().lastName();
+    public static String getCvc() {
+        return faker.numerify("###");
     }
 
-    public static String getOnlyName() {
-        Faker faker = new Faker(new Locale("ru"));
+    public static String getInvalidCvc() {
+        return faker.numerify("##");
+    }
+
+    public static String getOwnerCard() {
+        return faker.name().name();
+    }
+
+    public static String getInvalidOwnerCard() {
         return faker.name().firstName();
     }
 
-    public static String getOnlyNameInLatin() {
-        Faker faker = new Faker(new Locale("en"));
-        return faker.name().firstName();
-    }
-
-    public static String getOnlyLastname() {
+    public static String getInvalidOwnerCardCyrillic() {
         Faker faker = new Faker(new Locale("ru"));
-        return faker.name().lastName();
+        return faker.name().name();
     }
 
-    public static String getOnlyLastnameInLatin() {
-        Faker faker = new Faker(new Locale("en"));
-        return faker.name().lastName();
+    public static String getInvalidOwnerCardWithNumbers() {
+        return (faker.name().firstName() + faker.numerify("#######"));
     }
-
-    public static String getTooLongName() {
-        return faker.lorem().fixedString(250);
-    }
-
-    public static String getNameWithNumbers() {
-        return faker.number().digits(9);
-    }
-
-    public static String getNameWithOneLetter() {
-        return faker.lorem().characters(1);
-    }
-
-    public static String getValidCvc() {
-        FakeValuesService fakeValuesService = new FakeValuesService(new Locale("en"), new RandomService());
-        return fakeValuesService.numerify("###");
-    }
-
-    public static String getCvcWithOneDigit() {
-        FakeValuesService fakeValuesService = new FakeValuesService(new Locale("en"), new RandomService());
-        return fakeValuesService.numerify("#");
-    }
-
-    public static String getCvcWithTwoDigits() {
-        FakeValuesService fakeValuesService = new FakeValuesService(new Locale("en"), new RandomService());
-        return fakeValuesService.numerify("##");
+    public static String getInvalidOwnerCardOneLetterName() {
+        return "G";
     }
 }

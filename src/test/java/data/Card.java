@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Card {
-    private String number;
+    private String numberCard;
     private String month;
     private String year;
-    private String holderName;
+    private String ownerCard;
     private String cvc;
 }

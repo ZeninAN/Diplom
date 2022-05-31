@@ -1,49 +1,60 @@
 package data;
 
+import lombok.SneakyThrows;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DbUtils {
-    private static String getStatus(String query) throws SQLException {
-        String result = "";
-        var runner = new QueryRunner();
-        try
-                (var conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "pass")) {
+    private static String url = System.getProperty("db.url");
+    private static String user = System.getProperty("db.user");
+    private static String password = System.getProperty("db.password");
 
-            result = runner.query(conn, query, new ScalarHandler<String>());
+    @SneakyThrows
+    public static String getStatus(String status) {
+        QueryRunner runner = new QueryRunner();
+
+        try (
+                Connection conn = DriverManager.getConnection(
+                        url, user, password);
+
+        ) {
+            String result = runner.query(conn, status, new ScalarHandler<>());
             System.out.println(result);
             return result;
         }
-
     }
 
-    public static String getPaymentStatus() throws SQLException {
-        String statusSQL = "SELECT status FROM payment_entity";
+    @SneakyThrows
+    public static String getStatusPayment() {
+        String statusSQL = "SELECT status FROM payment_entity ORDER BY created DESC LIMIT 1";
         return getStatus(statusSQL);
     }
 
-    public static String getCreditStatus() throws SQLException {
-        String statusSQL = "SELECT status FROM credit_request_entity";
+    @SneakyThrows
+    public static String getStatusCredit() {
+        String statusSQL = "SELECT status FROM credit_request_entity ORDER BY created DESC LIMIT 1";
         return getStatus(statusSQL);
     }
 
-    public static void clearTables() {
-        var deletePaymentEntity = "DELETE FROM payment_entity";
-        var deleteCreditEntity = "DELETE FROM credit_request_entity";
-        var deleteOrderEntity = "DELETE FROM order_entity";
-        var runner = new QueryRunner();
-        try
-                (var conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "pass")
-                ) {
-            runner.update(conn, deletePaymentEntity);
-            runner.update(conn, deleteCreditEntity);
-            runner.update(conn, deleteOrderEntity);
+    @SneakyThrows
+    public static void deleteTables() {
+        QueryRunner runner = new QueryRunner();
+        String deleteCredit = "DELETE FROM credit_request_entity";
+        String deleteOrder = "DELETE FROM order_entity";
+        String deletePayment = "DELETE FROM payment_entity";
 
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
+        try (
+                Connection conn = DriverManager.getConnection(
+                        url, user, password);
+
+        ) {
+            runner.update(conn, deleteCredit);
+            runner.update(conn, deleteOrder);
+            runner.update(conn, deletePayment);
         }
 
     }
