@@ -1,4 +1,4 @@
-# Инструкция по запуску SUT
+# Инструкция по запуску SUT и симулятора
 1. Склонировать проект git clone
 
 2. Открыть проект в IDEA
@@ -14,3 +14,6 @@
 7. Открыть в Google Chrome ссылку http://localhost:8080
 
 8. После окончания тестов завершить работу приложения (Ctrl+C), остановить контейнеры командой docker-compose down
+
+
+План автоматизации:https://github.com/ZeninAN/Diplom/blob/master/docs/Plan.md 
