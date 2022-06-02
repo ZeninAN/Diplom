@@ -3,7 +3,7 @@
 
 2. Открыть проект в IDEA
 
-3. Перейти в папку gate-simulator (cd gate-simulator);
+3. Перейти в папку gate-simulator;
 
 4. Запустить банковский симулятор командой npm start;
 
@@ -15,5 +15,3 @@
 
 8. После окончания тестов завершить работу приложения (Ctrl+C), остановить контейнеры командой docker-compose down
 
-
-План автоматизации:https://github.com/ZeninAN/Diplom/blob/master/docs/Plan.md 
