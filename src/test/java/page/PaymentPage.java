@@ -48,32 +48,32 @@ public class PaymentPage {
     }
 
     public void checkInvalidFormat() {
-        $(".input__sub").shouldBe(visible).shouldHave(text("Неверный формат"),Duration.ofSeconds(15));
+        $(".input__sub").shouldHave(text("Неверный формат"),Duration.ofSeconds(15)).shouldBe(visible);
     }
 
     public void checkInvalidCardValidityPeriod() {
-        $(".input__sub").shouldBe(visible)
-                .shouldHave(text("Неверно указан срок действия карты"),Duration.ofSeconds(15));
+        $(".input__sub")
+                .shouldHave(text("Неверно указан срок действия карты"),Duration.ofSeconds(15)).shouldBe(visible);
     }
 
     public void checkCardExpired () {
-        $(".input__sub").shouldBe(visible)
-                .shouldHave(text("Истёк срок действия карты"),Duration.ofSeconds(15));
+        $(".input__sub")
+                .shouldHave(text("Истёк срок действия карты"),Duration.ofSeconds(15)).shouldBe(visible);
     }
 
     public void checkInvalidOwner() {
-        $(".input__sub").shouldBe(visible)
-                .shouldHave(text("Введите имя и фамилию, указанные на карте"),Duration.ofSeconds(15));
+        $(".input__sub")
+                .shouldHave(text("Введите имя и фамилию, указанные на карте"),Duration.ofSeconds(15)).shouldBe(visible);
     }
 
     public void checkEmptyField() {
-        $(".input__sub").shouldBe(visible)
-                .shouldHave(text("Поле обязательно для заполнения"),Duration.ofSeconds(15));
+        $(".input__sub")
+                .shouldHave(text("Поле обязательно для заполнения"),Duration.ofSeconds(15)).shouldBe(visible);
     }
 
     public void incorrectOwner() {
-        $(".input__sub").shouldBe(visible)
-                .shouldHave(text("Значение поля может содержать только латинские буквы и дефис"),Duration.ofSeconds(15));
+        $(".input__sub")
+                .shouldHave(text("Значение поля может содержать только латинские буквы и дефис"),Duration.ofSeconds(15)).shouldBe(visible);
     }
 
     public void checkAllFieldsAreRequired() {

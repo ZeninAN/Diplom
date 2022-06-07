@@ -35,7 +35,7 @@ public class PaymentTest {
         DbUtils.deleteTables();
     }
     @Test
-    void shouldPaymentWithApprovedCard() {
+    void shouldPaymentWithApprovedCard() throws SQLException {
         var startPage = new StartPage();
         Card card = new Card(
                 getFirstCardNumber(), getMonthCard(1), getYearCard(2), getOwnerCard(), getCvc());
@@ -46,7 +46,7 @@ public class PaymentTest {
         assertEquals("APPROVED", actual);
     }
     @Test
-    void shouldPaymentWithApprovedCardExpires() {
+    void shouldPaymentWithApprovedCardExpires() throws SQLException {
         var startPage = new StartPage();
         Card card = new Card(
                 getFirstCardNumber(), getMonthCard(0), getYearCard(0), getOwnerCard(), getCvc());
@@ -58,7 +58,7 @@ public class PaymentTest {
     }
 
     @Test
-    void shouldPaymentWithDeclinedCard() {
+    void shouldPaymentWithDeclinedCard() throws SQLException {
         var startPage = new StartPage();
         Card card = new Card(
                 getSecondCardNumber(), getMonthCard(0), getYearCard(1), getOwnerCard(), getCvc());
@@ -70,7 +70,7 @@ public class PaymentTest {
     }
 
     @Test
-    void shouldPaymentWithDeclinedCardExpires() {
+    void shouldPaymentWithDeclinedCardExpires() throws SQLException {
         var startPage = new StartPage();
         Card card = new Card(
                 getSecondCardNumber(), getMonthCard(0), getYearCard(0), getOwnerCard(), getCvc());
