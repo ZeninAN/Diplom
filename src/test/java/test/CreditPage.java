@@ -8,8 +8,6 @@ import data.Card;
 import data.DbUtils;
 import page.StartPage;
 
-import java.sql.SQLException;
-
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static data.DataGenerator.*;
@@ -34,7 +32,7 @@ public class CreditPage {
         }
 
         @Test
-        void shouldPaymentWithApprovedCard() throws SQLException {
+        void shouldPaymentWithApprovedCard() {
             var startPage = new StartPage();
             Card card = new Card(
                     getFirstCardNumber(), getMonthCard(1), getYearCard(2), getOwnerCard(), getCvc());
@@ -45,7 +43,7 @@ public class CreditPage {
             assertEquals("APPROVED", actual);
         }
         @Test
-        void shouldPaymentWithApprovedCardExpires() throws SQLException {
+        void shouldPaymentWithApprovedCardExpires() {
             var startPage = new StartPage();
             Card card = new Card(
                     getFirstCardNumber(), getMonthCard(0), getYearCard(0), getOwnerCard(), getCvc());
@@ -57,7 +55,7 @@ public class CreditPage {
         }
 
         @Test
-        void shouldPaymentWithDeclinedCard() throws SQLException {
+        void shouldPaymentWithDeclinedCard() {
             var startPage = new StartPage();
             Card card = new Card(
                     getSecondCardNumber(), getMonthCard(0), getYearCard(1), getOwnerCard(), getCvc());
@@ -69,7 +67,7 @@ public class CreditPage {
         }
 
         @Test
-        void shouldPaymentWithDeclinedCardExpires() throws SQLException {
+        void shouldPaymentWithDeclinedCardExpires() {
             var startPage = new StartPage();
             Card card = new Card(
                     getSecondCardNumber(), getMonthCard(0), getYearCard(0), getOwnerCard(), getCvc());
@@ -81,7 +79,7 @@ public class CreditPage {
         }
 
         @Test
-        void shouldPaymentWithInvalidCardNumber()  {
+        void shouldPaymentWithInvalidCardNumber() {
             var startPage = new StartPage();
             Card card = new Card(
                     getInvalidCardNumber(), getMonthCard(2), getYearCard(1), getOwnerCard(), getCvc());
