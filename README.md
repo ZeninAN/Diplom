@@ -21,8 +21,14 @@
 
 ## Отчеты в MySql
 
+Запуск джарника для mysql
+java "-Dspring.datasource.url=jdbc:mysql://localhost:3306/app" -jar aqa-shop.jar
+
 В терминале ввести команду ./gradlew clean test "-Ddb.url=jdbc:mysql://localhost:3306/app"
 
 ## Отчеты в postgresql
+
+Запуск джарника для postgresql
+java "-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app" -jar aqa-shop.jar
 
 В терминале ввести команду ./gradlew clean test "-Ddb.url=jdbc:postgresql://localhost:5432/app"
