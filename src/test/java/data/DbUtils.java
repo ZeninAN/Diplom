@@ -18,7 +18,7 @@ public class DbUtils {
 
         try (
                 Connection conn = DriverManager.getConnection(
-                        url, user, password);
+                        url, user, password)
 
         ) {
             String result = runner.query(conn, status, new ScalarHandler<>());
@@ -48,7 +48,7 @@ public class DbUtils {
 
         try (
                 Connection conn = DriverManager.getConnection(
-                        url, user, password);
+                        url, user, password)
 
         ) {
             runner.update(conn, deleteCredit);

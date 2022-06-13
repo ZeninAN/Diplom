@@ -85,7 +85,7 @@ public class CreditPage {
                     getInvalidCardNumber(), getMonthCard(2), getYearCard(1), getOwnerCard(), getCvc());
             var creditPage = startPage.paymentOnCredit();
             creditPage.getFillCardDetails(card);
-            creditPage.invalidPaymentCreditCard();
+            creditPage.checkInvalidCardValidityPeriod();
         }
 
         @Test
@@ -229,7 +229,7 @@ public class CreditPage {
                 getFirstCardNumber(), getMonthCard(1), getInvalidYearCard(), getOwnerCard(), getCvc());
         var creditPage = startPage.paymentOnCredit();
         creditPage.getFillCardDetails(card);
-        creditPage.checkCardExpired();
+        creditPage.checkInvalidCardValidityPeriod();
     }
 
         @Test

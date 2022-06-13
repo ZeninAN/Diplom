@@ -232,7 +232,7 @@ public class PaymentTest {
                 getFirstCardNumber(), getMonthCard(1), getInvalidYearCard(), getOwnerCard(), getCvc());
         var paymentPage = startPage.payment();
         paymentPage.getFillCardDetails(card);
-        paymentPage.checkInvalidFormat();
+        paymentPage.checkInvalidCardValidityPeriod();
     }
 
     @Test
