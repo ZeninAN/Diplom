@@ -9,20 +9,16 @@
 
 5. Для запуска контейнеров в docker использовать команду docker-compose up
 
-6. Запустить джарник в общем терминале использовав команду java -jar ./aqa-shop.jar
+6. Запустить джарник в общем терминале использовав команду для mysql
+java "-Dspring.datasource.url=jdbc:mysql://localhost:3306/app" -jar aqa-shop.jar
 
-7. Запуск тестов (Allure) для запуска ввести команду./gradlew clean test allureReport
+7. В терминале ввести команду ./gradlew clean test "-Ddb.url=jdbc:mysql://localhost:3306/app"
 
 8. Открыть в Google Chrome ссылку http://localhost:8080
 
-9. Для получения отчета Allure в браузере, ввести команду ./gradlew allureServe
-
-10. После окончания тестов завершить работу приложения (Ctrl+C), остановить контейнеры командой docker-compose down
+9. После окончания тестов завершить работу приложения (Ctrl+C), остановить контейнеры командой docker-compose down
 
 ## Отчеты в MySql
-
-Запуск джарника для mysql
-java "-Dspring.datasource.url=jdbc:mysql://localhost:3306/app" -jar aqa-shop.jar
 
 В терминале ввести команду ./gradlew clean test "-Ddb.url=jdbc:mysql://localhost:3306/app"
 
