@@ -1,7 +1,6 @@
 package test;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.Feature;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import data.Card;
@@ -12,7 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static data.DataGenerator.*;
 
-public class CreditPage {
+public class CreditTest {
 
         @BeforeAll
         static void setUpAll() {
