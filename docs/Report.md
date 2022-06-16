@@ -10,5 +10,10 @@
 - Не успешные: MySql-24; Posgresql-24
 ## Процент успешных/не успешных 
 - Успешные MySql:52% Posgresql:52%
-- Не успешные MySql:52% Posgresql:52%
+- Не успешные MySql:48% Posgresql:48%
 ## Общие рекомендации
+
+Устранить дефекты https://github.com/ZeninAN/Diplom/issues
+
+
+Все скриншоты с тест-кейсами https://github.com/ZeninAN/Diplom/tree/master/docs/Gradle
